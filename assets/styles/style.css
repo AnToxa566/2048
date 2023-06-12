@@ -83,10 +83,15 @@ body {
 }
 
 .tile {
+  --x: 0;
+  --y: 0;
+  --bg-color-lightness: 91%;
+  --text-color-lightness: 1%;
   position: absolute;
-  top: 2vmin;
-  left: 2vmin;
-  color: white;
+  top: calc(2vmin + var(--y) * 22vmin);
+  left: calc(2vmin + var(--x) * 22vmin);
+  color: hsl(0, 0%, var(--text-color-lightness));
+  font-weight: 700;
   font-size: 8vmin;
   display: flex;
   align-items: center;
@@ -94,7 +99,7 @@ body {
   width: 20vmin;
   height: 20vmin;
   border-radius: 2vmin;
-  background-color: #415a77;
+  background-color: hsl(212, 29%, var(--bg-color-lightness));
   transition: 0.1s;
   animation: show 0.2s;
 }

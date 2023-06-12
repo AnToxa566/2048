@@ -1,13 +1,18 @@
 .tile {
+    --x: 0;
+    --y: 0;
+
+    --bg-color-lightness: 91%;
+    --text-color-lightness: 1%;
+
     position: absolute;
 
-    $top: 0;
-    $left: 0;
+    top: calc($board-padding + (var(--y) * ($cell-size + $board-gap)));
+    left: calc($board-padding + (var(--x) * ($cell-size + $board-gap)));
 
-    top: $board-padding + ($top * ($cell-size + $board-gap));
-    left: $board-padding + ($left * ($cell-size + $board-gap));;
+    color: hsl(0, 0%, var(--text-color-lightness));
 
-    color: $tile-text-color;
+    font-weight: 700;
     font-size: $tile-text-size;
 
     display: flex;
@@ -18,7 +23,7 @@
     height: $cell-size;
     border-radius: $cell-border-radius;
 
-    background-color: $tile-background-color;
+    background-color: hsl(212, 29%, var(--bg-color-lightness));
 
     transition: .1s;
     animation: show .2s;
