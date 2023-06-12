@@ -2,10 +2,13 @@ import Board from './components/board.js';
 import Tile from './components/tile.js';
 
 
+/* CREATE GAME BOARD */
+
 const boardElement = document.querySelector('.board');
 const board = new Board(boardElement);
 
-window.addEventListener('keydown', handleInput);
+
+/* CREATE FIRST TILES */
 
 createTile();
 createTile();
@@ -13,6 +16,11 @@ createTile();
 function createTile() {
     board.getRandomEmptyCell()?.linkTile(new Tile(boardElement));
 }
+
+
+/* HANDLE KEYS INPUT */
+
+window.addEventListener('keydown', handleInput);
 
 function handleInput(event) {
     switch (event.key) {
@@ -61,6 +69,8 @@ function handleInput(event) {
 }
 
 
+/* MOVE TILES */
+
 function moveTilesUp() {
     slideTiles(board.cellsGroupedByColumn);
 }
@@ -78,12 +88,12 @@ function moveTilesRight() {
 }
 
 
+/* SLIDE TILES */
+
 function slideTiles(groupedCells) {
     groupedCells.forEach(cellsGroup => slideTilesInGroup(cellsGroup));
-    mergeTiles();
-}
-
-function mergeTiles() {
+    
+    /* Merge Tiles */
     board.cells.forEach(cell => cell.hasTileForMerge() && cell.mergeCells());
 }
 
@@ -119,10 +129,11 @@ function slideTilesInGroup(cellsGroup) {
 }
 
 
+/* CHECK IF CAN MOVES */
+
 function canMove() {
     return canMoveUp() || canMoveDown() || canMoveLeft() || canMoveRight();
 }
-
 
 function canMoveUp() {
     return canMoveTiles(board.cellsGroupedByColumn);
@@ -139,7 +150,6 @@ function canMoveLeft() {
 function canMoveRight() {
     return canMoveTiles(board.cellsGroupedByRowReversed);
 }
-
 
 function canMoveTiles(groupedCells) {
     return groupedCells.some(cellsGroup => canMoveTilesInGroup(cellsGroup));

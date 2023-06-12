@@ -1,7 +1,7 @@
 import Cell from './cell.js'
 
 const BOARD_SIZE = 4;
-const CELLS_COUNT = BOARD_SIZE * BOARD_SIZE;
+const CELLS_COUNT = BOARD_SIZE ** 2;
 
 export default class Board {
     constructor(boardElement) {

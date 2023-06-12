@@ -1,9 +1,12 @@
 export default class Tile {
     constructor(boardElement) {
+        this.createTileElement(boardElement)
+        this.setValue(2);
+    }
+
+    createTileElement(boardElement) {
         this.tileElement = document.createElement('div');
         this.tileElement.className = 'tile';
-
-        this.setValue(2);
 
         boardElement.append(this.tileElement);
     }
@@ -15,9 +18,9 @@ export default class Tile {
 
     setValue(value) {
         this.value = value;
-        this.tileElement.textContent = this.value;
+        this.tileElement.textContent = value;
 
-        const bgLightness = 100 - Math.log2(this.value) * 9;
+        const bgLightness = 100 - Math.log2(value) * 9;
 
         this.tileElement.style.setProperty('--bg-color-lightness', `${bgLightness}%`);
         this.tileElement.style.setProperty('--text-color-lightness', `${bgLightness < 50 ? 90 : 10}%`);

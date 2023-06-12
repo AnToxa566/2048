@@ -1,11 +1,15 @@
 export default class Cell {
     constructor(boardElement, x, y) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        boardElement.append(cell);
+        this.createCellElement(boardElement);
 
         this.x = x;
         this.y = y;
+    }
+
+    createCellElement(boardElement) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        boardElement.append(cell);
     }
 
     linkTile(tile) {
@@ -18,8 +22,8 @@ export default class Cell {
     }
 
     linkTileForMerge(tile) {
-        tile.setXY(this.x, this.y);
         this.linkedTileForMerge = tile;
+        tile.setXY(this.x, this.y);
     }
 
     unlinkTileForMerge() {
@@ -43,6 +47,6 @@ export default class Cell {
     }
 
     canAccept(tile) {
-        return this.isEmpty() || (this.linkedTile.value === tile.value && !this.hasTileForMerge());
+        return this.isEmpty() || (!this.hasTileForMerge() && this.linkedTile.value === tile.value);
     }
 }
