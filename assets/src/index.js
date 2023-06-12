@@ -22,14 +22,14 @@ function createTile() {
 
 window.addEventListener('keydown', handleInput);
 
-function handleInput(event) {
+async function handleInput(event) {
     switch (event.key) {
         case 'ArrowUp':
             if(!canMoveUp()) {
                 return
             }
 
-            moveTilesUp();
+            await moveTilesUp();
             break;
         
         case 'ArrowDown':
@@ -37,7 +37,7 @@ function handleInput(event) {
                 return
             }
 
-            moveTilesDown();
+            await moveTilesDown();
             break;
 
         case 'ArrowLeft':
@@ -45,7 +45,7 @@ function handleInput(event) {
                 return
             }
 
-            moveTilesLeft();
+            await moveTilesLeft();
             break;
 
         case 'ArrowRight':
@@ -53,7 +53,7 @@ function handleInput(event) {
                 return
             }
 
-            moveTilesRight();
+            await moveTilesRight();
             break;
 
         default: 
@@ -71,33 +71,36 @@ function handleInput(event) {
 
 /* MOVE TILES */
 
-function moveTilesUp() {
-    slideTiles(board.cellsGroupedByColumn);
+async function moveTilesUp() {
+    await slideTiles(board.cellsGroupedByColumn);
 }
 
-function moveTilesDown() {
-    slideTiles(board.cellsGroupedByColumnReversed);
+async function moveTilesDown() {
+    await slideTiles(board.cellsGroupedByColumnReversed);
 }
 
-function moveTilesLeft() {
-    slideTiles(board.cellsGroupedByRow);
+async function moveTilesLeft() {
+    await slideTiles(board.cellsGroupedByRow);
 }
 
-function moveTilesRight() {
-    slideTiles(board.cellsGroupedByRowReversed);
+async function moveTilesRight() {
+    await slideTiles(board.cellsGroupedByRowReversed);
 }
 
 
 /* SLIDE TILES */
 
-function slideTiles(groupedCells) {
-    groupedCells.forEach(cellsGroup => slideTilesInGroup(cellsGroup));
+async function slideTiles(groupedCells) {
+    const promises = [];
+    groupedCells.forEach(cellsGroup => slideTilesInGroup(cellsGroup, promises));
+
+    await Promise.all(promises);
     
     /* Merge Tiles */
     board.cells.forEach(cell => cell.hasTileForMerge() && cell.mergeCells());
 }
 
-function slideTilesInGroup(cellsGroup) {
+function slideTilesInGroup(cellsGroup, promises) {
     for (let i = 0; i < cellsGroup.length; i++) {
         if (cellsGroup[i].isEmpty()) {
             continue;
@@ -116,6 +119,8 @@ function slideTilesInGroup(cellsGroup) {
         if (!targerCell) {
             continue;
         }
+
+        promises.push(cellWithTile.linkedTile.waitForEndTransition());
 
         if (targerCell.isEmpty()) {
             targerCell.linkTile(cellWithTile.linkedTile);

@@ -26,6 +26,12 @@ export default class Tile {
         this.tileElement.style.setProperty('--text-color-lightness', `${bgLightness < 50 ? 90 : 10}%`);
     }
 
+    waitForEndTransition() {
+        return new Promise(resolve => {
+            this.tileElement.addEventListener('transitionend', resolve, { once: true });
+        });
+    }
+
     removeFromDOM() {
         this.tileElement.remove();
     }

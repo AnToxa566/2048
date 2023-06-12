@@ -100,8 +100,8 @@ body {
   height: 20vmin;
   border-radius: 2vmin;
   background-color: hsl(212, 29%, var(--bg-color-lightness));
-  transition: 0.1s;
-  animation: show 0.2s;
+  transition: 0.3s;
+  animation: show 0.4s;
 }
 
 @keyframes show {
