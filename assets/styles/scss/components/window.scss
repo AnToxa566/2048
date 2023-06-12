@@ -1,0 +1,10 @@
+.window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $light-color;
+    
+    height: 100vh;
+    padding: 20px;
+}

@@ -53,4 +53,57 @@ table {
   border-spacing: 0;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e1dd;
+  height: 100vh;
+  padding: 20px;
+}
+
+.board {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(4, 20vmin);
+  grid-template-columns: repeat(4, 20vmin);
+  gap: 2vmin;
+  padding: 2vmin;
+  border-radius: 2vmin;
+  background-color: #1b263b;
+}
+
+.cell {
+  border-radius: 2vmin;
+  background-color: white;
+}
+
+.tile {
+  position: absolute;
+  top: 2vmin;
+  left: 2vmin;
+  color: white;
+  font-size: 8vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 2vmin;
+  background-color: #415a77;
+  transition: 0.1s;
+  animation: show 0.2s;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

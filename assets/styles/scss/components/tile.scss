@@ -1,0 +1,32 @@
+.tile {
+    position: absolute;
+
+    $top: 0;
+    $left: 0;
+
+    top: $board-padding + ($top * ($cell-size + $board-gap));
+    left: $board-padding + ($left * ($cell-size + $board-gap));;
+
+    color: $tile-text-color;
+    font-size: $tile-text-size;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $cell-size;
+    height: $cell-size;
+    border-radius: $cell-border-radius;
+
+    background-color: $tile-background-color;
+
+    transition: .1s;
+    animation: show .2s;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+}

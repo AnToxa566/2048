@@ -1,0 +1,13 @@
+.board {
+    position: relative;
+
+    display: grid;
+    grid-template-rows: repeat(4, $cell-size);
+    grid-template-columns: repeat(4, $cell-size);
+
+    gap: $board-gap;
+    padding: $board-padding;
+    border-radius: $board-border-radius;
+
+    background-color: $dark-color;
+}
