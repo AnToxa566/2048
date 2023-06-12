@@ -1,13 +1,30 @@
-$light-color: #e0e1dd;
-$dark-color: #1b263b;
+// Window
 
-$tile-text-size: 8vmin;
-$tile-text-color: white;
-$tile-background-color: #415a77;
+$window-bg-color: #edede9;
+$window-text-color: #b89c8d;
+$window-font-size: 3vmin;
 
-$cell-size: 20vmin;
-$cell-border-radius: 2vmin;
+
+// Cell
+
+$cell-size: 12vmin;
+$cell-bg-color: #e3d5ca;
+$cell-border-radius: 1vmin;
+
+
+// Tile
+
+$tile-text-size: 5vmin;
+
+
+// Board
 
 $board-gap: 2vmin;
 $board-padding: 2vmin;
-$board-border-radius: 2vmin;
+$board-bg-color: #d5bdaf;
+$board-border-radius: 1vmin;
+
+
+// Button
+
+$btn-bg-color: #8d7467;

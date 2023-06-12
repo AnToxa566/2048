@@ -1,0 +1,21 @@
+.top {
+    display: grid;
+    grid-template-columns: repeat(4, $cell-size);
+
+    align-items: center;
+    justify-items: center;
+
+    color: white;
+    background-color: $board-bg-color;
+
+    gap: $board-gap;
+    padding: $board-padding;
+    border-radius: $board-border-radius;
+
+    margin-bottom: 1.5rem;
+
+    &__title {
+        font-weight: 700;
+        font-size: $window-font-size * 1.5;
+    }
+}

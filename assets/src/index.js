@@ -8,6 +8,30 @@ const boardElement = document.querySelector('.board');
 const board = new Board(boardElement);
 
 
+/* SCORES */
+
+const scoreElement = document.querySelector('#score-value');
+const bestScoreElement = document.querySelector('#best-value');
+
+bestScoreElement.textContent = localStorage.getItem('bestScore') || 0;
+
+function incrementScoreByValue(value) {
+    const newScore = Number.parseInt(scoreElement.textContent) + value;
+    const bestScore = Number.parseInt(bestScoreElement.textContent);
+
+    scoreElement.textContent = newScore;
+
+    if (newScore > bestScore) {
+        updateBestScore(newScore);
+    }
+}
+
+function updateBestScore(score) {
+    bestScoreElement.textContent = score;
+    localStorage.setItem('bestScore', score);
+}
+
+
 /* CREATE FIRST TILES */
 
 createTile();
@@ -97,7 +121,11 @@ async function slideTiles(groupedCells) {
     await Promise.all(promises);
     
     /* Merge Tiles */
-    board.cells.forEach(cell => cell.hasTileForMerge() && cell.mergeCells());
+    board.cells.forEach(cell => {
+        if (cell.hasTileForMerge()) {
+            incrementScoreByValue(cell.mergeCells());
+        }
+    });
 }
 
 function slideTilesInGroup(cellsGroup, promises) {
@@ -172,4 +200,17 @@ function canMoveTilesInGroup(cellsGroup) {
 
         return cellsGroup[index - 1].canAccept(cell.linkedTile);
     })
+}
+
+
+/* NEW GAME BUTTON */
+
+const newGameButton = document.querySelector('#new-game-btn');
+
+newGameButton.onclick = event => {
+    event.preventDefault();
+    
+    if (confirm('Are you sure you want to reload the game?')) {
+        location.reload();
+    }
 }

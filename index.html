@@ -11,6 +11,22 @@
     </head>
 
     <body class="window">
+        <section class="top">
+            <h1 class="top__title">2048</h1>
+
+            <div class="top__score score">
+                <span class="score__title">Score</span>
+                <span id="score-value" class="score__value">0</span>
+            </div>
+
+            <div class="top__best score">
+                <span class="score__title">Best</span>
+                <span id="best-value" class="score__value">0</span>
+            </div>
+
+            <button id="new-game-btn" class="top__btn btn">New Game</button>
+        </section>
+
         <div class="board"></div>
 
         <script type="module" src="./assets/src/index.js"></script>

@@ -59,9 +59,11 @@ body {
 
 .window {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background-color: #e0e1dd;
+  color: #b89c8d;
+  background-color: #edede9;
+  font-size: 3vmin;
   height: 100vh;
   padding: 20px;
 }
@@ -69,17 +71,17 @@ body {
 .board {
   position: relative;
   display: grid;
-  grid-template-rows: repeat(4, 20vmin);
-  grid-template-columns: repeat(4, 20vmin);
+  grid-template-rows: repeat(4, 12vmin);
+  grid-template-columns: repeat(4, 12vmin);
   gap: 2vmin;
   padding: 2vmin;
-  border-radius: 2vmin;
-  background-color: #1b263b;
+  border-radius: 1vmin;
+  background-color: #d5bdaf;
 }
 
 .cell {
-  border-radius: 2vmin;
-  background-color: white;
+  border-radius: 1vmin;
+  background-color: #e3d5ca;
 }
 
 .tile {
@@ -88,20 +90,20 @@ body {
   --bg-color-lightness: 91%;
   --text-color-lightness: 1%;
   position: absolute;
-  top: calc(2vmin + var(--y) * 22vmin);
-  left: calc(2vmin + var(--x) * 22vmin);
+  top: calc(2vmin + var(--y) * 14vmin);
+  left: calc(2vmin + var(--x) * 14vmin);
   color: hsl(0, 0%, var(--text-color-lightness));
   font-weight: 700;
-  font-size: 8vmin;
+  font-size: 5vmin;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20vmin;
-  height: 20vmin;
-  border-radius: 2vmin;
-  background-color: hsl(212, 29%, var(--bg-color-lightness));
-  transition: 0.3s;
-  animation: show 0.4s;
+  width: 12vmin;
+  height: 12vmin;
+  border-radius: 1vmin;
+  background-color: hsl(40, 70%, var(--bg-color-lightness));
+  transition: 0.2s;
+  animation: show 0.2s;
 }
 
 @keyframes show {
@@ -109,6 +111,45 @@ body {
     opacity: 0.5;
     transform: scale(0.5);
   }
+}
+.top {
+  display: grid;
+  grid-template-columns: repeat(4, 12vmin);
+  align-items: center;
+  justify-items: center;
+  color: white;
+  background-color: #d5bdaf;
+  gap: 2vmin;
+  padding: 2vmin;
+  border-radius: 1vmin;
+  margin-bottom: 1.5rem;
+}
+.top__title {
+  font-weight: 700;
+  font-size: 4.5vmin;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+}
+.score__title {
+  font-size: 1.5vmin;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.btn {
+  cursor: pointer;
+  color: white;
+  background-color: #8d7467;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

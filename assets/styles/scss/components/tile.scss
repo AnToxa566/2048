@@ -23,10 +23,10 @@
     height: $cell-size;
     border-radius: $cell-border-radius;
 
-    background-color: hsl(212, 29%, var(--bg-color-lightness));
+    background-color: hsl(40, 70%, var(--bg-color-lightness));
 
-    transition: .3s;
-    animation: show .4s;
+    transition: .2s;
+    animation: show .2s;
 }
 
 @keyframes show {

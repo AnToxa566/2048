@@ -43,7 +43,11 @@ export default class Cell {
             this.linkedTile.setValue(this.linkedTile.value + this.linkedTileForMerge.value);
             this.linkedTileForMerge.removeFromDOM();
             this.unlinkTileForMerge();
+
+            return this.linkedTile.value;
         }
+
+        return 0;
     }
 
     canAccept(tile) {
